@@ -111,19 +111,20 @@ This command will run the project in 8080 port. Port can be changed in the packa
 ```sh
 npm run offline
 ```
-
-Note: If you have local dynaomodb running for development purpose, you can run. Please change database settings in env.yml file
-
-```sh
-sls run offline
-```
-
-
 Now visit [http://localhost:8080/graphql](http://localhost:8080/graphql) the browser to launch GraphQL Playground
 
 
 ![](etc/gql.png)
 **Figure**: GraphQL Playground 
+
+
+Note: If you have local dynaomodb running for development purpose, you can run following command. Please change database settings in env.yml file accordingly
+
+```sh
+sls run offline --port 8080
+```
+
+
 
 ## Query and Mutation
 In order to create new record in the database, execute following graphql query. 
