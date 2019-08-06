@@ -300,7 +300,7 @@ cacheControl: {
 ```
 
 ### Error Propagation
-Error message (without stacktrace) can be propagated to response. You can see main.resolver.ts for more details.
+Error message (without stacktrace) can be propagated to HTTP response to client. You can see `src/v1/service/activity.service.ts` for more details.
 
 ```js
 if (...) throw new Error("Error message to propagate");
