@@ -79,9 +79,9 @@ Cloudwatch is used for logging purpose.
 
 ### Prerequisite
 
-1. [Node](https://nodejs.org/en/download/) 8.10+
-2. [Serverless](https://www.npmjs.com/package/serverless) 1.49.0+ 
-3. [Typescript](https://www.npmjs.com/package/typescript) 3.5+
+1. [Node](https://nodejs.org/en/download/) 8.10.0 or higher
+2. [Serverless](https://www.npmjs.com/package/serverless) 1.40.0 or higher
+3. [Typescript](https://www.npmjs.com/package/typescript) 3.5 or higher
 
 
 ```sh
