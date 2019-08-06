@@ -47,7 +47,8 @@
     "collectCoverageFrom": [
       "src/v1/**/*.{ts,js}",
       "!**/test-coverage/**",
-      "!**/tests/**"
+      "!**/tests/**",
+      "!src/v1/graphql/**"
     ],
     "coverageDirectory": "./test-coverage",
     "transform": {
