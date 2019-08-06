@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "inlineSourceMap": true,
+    "target": "es2017"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

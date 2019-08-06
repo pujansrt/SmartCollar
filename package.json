@@ -1,0 +1,62 @@
+{
+  "name": "SmartCollar",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "offline": "sls offline start --host 0.0.0.0 --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pujansrt/SmartCollar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pujansrt/SmartCollar/issues"
+  },
+  "homepage": "https://github.com/pujansrt/SmartCollar#readme",
+  "devDependencies": {
+    "@types/hapi": "^18.0.2",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^10.5.4",
+    "aws-sdk": "^2.503.0",
+    "jest": "^24.8.0",
+    "serverless-offline": "^5.8.0",
+    "standard": "^11.0.1",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "apollo-cache-control": "^0.8.1",
+    "apollo-server-lambda": "^2.8.1",
+    "graphql": "^14.4.2",
+    "hapi": "^18.1.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.24.0"
+  },
+  "jest": {
+    "globalSetup": "<rootDir>/tests/setup.js",
+    "globalTeardown": "<rootDir>/tests/teardown.js",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/test-coverage/**",
+      "!**/tests/**"
+    ],
+    "coverageDirectory": "./test-coverage",
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts)$",
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ]
+  }
+}

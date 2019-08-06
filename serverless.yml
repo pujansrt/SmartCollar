@@ -1,0 +1,28 @@
+service: collar-service
+plugins:
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+  stage: development
+  memorySize: 1024
+  timeout: 30
+
+functions:
+  graphql:
+    handler: src/v1/graphql/handler.graphql
+    environment:
+      TABLE_NAME: pujan
+      ACTIVITY_TYPES:
+        - BARK
+        - PHYSICAL_ACTIVITY
+        - LOCATION
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
