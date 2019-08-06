@@ -275,6 +275,12 @@ You may add new activity type in serverless.yml file.
 
 ## Development Guidelines
 
+### UnitTest
+
+```sh
+npm run test
+```
+
 ### CacheControl
 
 maxAge for cache-control is set for 30 seconds. This can be changed in the src/v1/graphql/handler.ts file

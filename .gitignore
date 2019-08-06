@@ -27,3 +27,4 @@ typings/
 .idea
 *.js
 package-lock.json
+test-coverage

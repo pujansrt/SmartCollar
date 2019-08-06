@@ -1,3 +1,8 @@
+/**
+ * ActivityItem Model is used to model different activities as well as parameters by GQL
+ *
+ * @author Pujan Srivastava
+ */
 export interface ActivityItem {
     partitionKey: string;
     sortKey?: string;
@@ -5,7 +10,7 @@ export interface ActivityItem {
     createdAt?: string;
     startTime?: number;
     endTime?: number;
-    actionData: {
+    actionData?: {
         location?: any;
         duration?: number;
     }

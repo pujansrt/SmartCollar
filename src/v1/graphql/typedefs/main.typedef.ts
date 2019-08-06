@@ -29,6 +29,11 @@ const allTypeDefs = gql`
     actionData: actionDataInput!
   }
   
+  input CollarDelete {
+    partitionKey: String!
+    sortKey: String!
+  }
+  
   input actionDataInput {
     duration: Int
     location: LocationInput
@@ -55,7 +60,7 @@ const allTypeDefs = gql`
   
   type Mutation {
     createActivityItem(data: CollarInput!): CollarResult
-    deleteActivityItem(data: CollarInput!): Collar
+    deleteActivityItem(data: CollarDelete!): Collar
   }
   
 `;

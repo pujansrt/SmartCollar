@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "offline": "sls offline start --host 0.0.0.0 --port 8080",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "jest": "^24.8.0",
     "serverless-offline": "^5.8.0",
     "standard": "^11.0.1",
+    "ts-jest": "^24.0.2",
     "typescript": "^2.9.2"
   },
   "dependencies": {
@@ -44,7 +45,7 @@
       "text"
     ],
     "collectCoverageFrom": [
-      "**/*.{js}",
+      "src/v1/**/*.{ts,js}",
       "!**/test-coverage/**",
       "!**/tests/**"
     ],
@@ -52,7 +53,7 @@
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts)$",
+    "testRegex": "(/tests/.*\\.(test|spec))\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "js",
       "ts",
