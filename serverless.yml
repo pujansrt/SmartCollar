@@ -5,19 +5,16 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-1
-  stage: development
+  stage: ${opt:stage,'local'}
   memorySize: 1024
   timeout: 30
+  environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
 
 functions:
   graphql:
     handler: src/v1/graphql/handler.graphql
     environment:
-      TABLE_NAME: pujan
-      ACTIVITY_TYPES:
-        - BARK
-        - PHYSICAL_ACTIVITY
-        - LOCATION
+      STAGE: ${self:provider.stage}
     events:
       - http:
           path: graphql

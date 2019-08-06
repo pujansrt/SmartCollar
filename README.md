@@ -106,11 +106,18 @@ tsc
 ```
 
 ### Run
-This command will run the project in 8080 port. Port can be changed in the package.json file.
+This command will run the project in 8080 port. Port can be changed in the package.json file. AWS default dynamodb database is used.
 
 ```sh
 npm run offline
 ```
+
+Note: If you have local dynaomodb running for development purpose, you can run. Please change database settings in env.yml file
+
+```sh
+sls run offline
+```
+
 
 Now visit [http://localhost:8080/graphql](http://localhost:8080/graphql) the browser to launch GraphQL Playground
 

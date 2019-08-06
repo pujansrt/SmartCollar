@@ -85,7 +85,7 @@ export class ActivityService {
             response.items = items.Items;
             return response;
         } catch (error) {
-            console.error('Error: ', error.message);
+            console.error('[ACTIVITY_SERVICE.getActivityItem] 90: Error: ',error);
             throw new Error(error.message);
         }
     }
