@@ -276,6 +276,7 @@ You may add new activity type in serverless.yml file.
 ## Development Guidelines
 
 ### UnitTest
+Following command will run tests and generate code coverage report
 
 ```sh
 npm run test

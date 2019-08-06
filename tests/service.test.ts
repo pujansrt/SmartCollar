@@ -127,7 +127,7 @@ describe('Query Suite', () => {
         done();
     });
 
-    test('Mutation Create - Fail', async (done) => {
+    test('Mutation Create - Fail (Missing activity type)', async (done) => {
         const item: ActivityItem = {
             partitionKey: "54668-30073-6ad9de2",
             actionData: {duration: 34}
@@ -141,7 +141,7 @@ describe('Query Suite', () => {
             });
     });
 
-    test('Mutation Create - Fail', async (done) => {
+    test('Mutation Create - Fail (Absence of long in location)', async (done) => {
         const item: ActivityItem = {
             partitionKey: "54668-30073-6ad9de2",
             activityType: "LOCATION",
