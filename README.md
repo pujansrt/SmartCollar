@@ -51,7 +51,17 @@ Lambda function is exposed http endpoints via API Gateway. This provides highly 
 Caching by API Gateway can be enable to provide the latency of requests to APIs. The default TTL for API Gateway caching is 5 minutes.
 
 **Lambda** - 
-API endpoints and business rules are implemented in the AWS Lambda
+Business rules are implemented in the AWS Lambda. Serverless or lambda is **managed service** provided by cloud providers, AWS in our implementation. 
+
+Lambda is completely **even driven** i.e. it wll only run when invoked. This is perfect for application services having quiet periods followed by peaks in traffic. 
+
+Lambda really works well with API Gateway. Here sole purpose of using lambda behind API Gateway is to expose lambda function through HTTP endpoint.
+
+Lambda can instantly scale up to a large number of parallel executions, for which the limit is controlled by the no of concurrent requests. Downscaling is handled by terminating the lambda functions as soon as it completes the operation.
+
+Serveless implementation is cheap because it meant to be run seldom and you are only billed for the time it executes. 
+
+There is only one disadvantage: lambda has **cold start**. Only first request get response a bit slower. However this can be avoided by regular polling or using [warmup plugin](https://www.npmjs.com/package/serverless-plugin-warmup).
 
 **Dynamodb** - 
 Dynamodb is used to persist data provided by collar.

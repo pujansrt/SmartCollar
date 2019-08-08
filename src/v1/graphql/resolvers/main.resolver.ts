@@ -1,7 +1,7 @@
 import {ActivityItem} from "../../models/ActivityItem";
 import {ActivityService} from "../../service/activity.service";
 
-const activityResolvers = {
+const activityResolver = {
     Query: {
 
         /**
@@ -34,4 +34,4 @@ const activityResolvers = {
 
 };
 
-module.exports = activityResolvers;
+module.exports = activityResolver;
