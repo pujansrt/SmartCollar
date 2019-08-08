@@ -1,9 +1,17 @@
 # Smart collar service
 
+
 - [Smart collar service](#smart-collar-service)
   * [Architecture](#architecture)
     + [Components](#components)
+      - [Collar Device](#collar-device)
+      - [IoT Device](#iot-device)
+      - [API Gateway](#api-gateway)
+      - [Lambda](#lambda)
+      - [Dynamodb](#dynamodb)
+      - [CloudWatch](#cloudwatch)
   * [Database Design](#database-design)
+  * [GraphQL](#graphql)
   * [Setup](#setup)
     + [Prerequisite](#prerequisite)
     + [Install](#install)
@@ -13,8 +21,14 @@
     + [Creating New Record](#creating-new-record)
     + [Query Records](#query-records)
     + [Query By ActivityType](#query-by-activitytype)
+    + [Query Between Timeperiod](#query-between-timeperiod)
     + [Pagination](#pagination)
     + [Activity Types](#activity-types)
+  * [Development Guidelines](#development-guidelines)
+    + [UnitTest](#unittest)
+    + [CacheControl](#cachecontrol)
+    + [Error Propagation](#error-propagation)
+    + [Enable CORS](#enable-cors)
   * [Future Enhancement](#future-enhancement)
     + [Scaling](#scaling)
     + [Active-Active Setup](#active-active-setup)
@@ -22,7 +36,6 @@
 - [Appendix](#appendix)
     + [Create Dynamodb Table](#create-dynamodb-table)
 - [References](#references)
-
 
 Design a scalable system which can track pet(s). These pet activities are considered:
 
@@ -37,36 +50,36 @@ Design a scalable system which can track pet(s). These pet activities are consid
 
 ### Components
 
-**Collar Device** - 
+#### Collar Device
 Smart collar sends various actions items to IoT device via bluetooth/RF. Every collar is uniquely identified via its deviceid.
 This id is used in the dynamodb database table's Partition Key.
 
-**IoT Device** -
+#### IoT Device
 IoT (Internet of Things) device is responsible to publish events to system via HTTP POST. Multiple collar devices can be connected to a IoT device.
 
 Sample POST Graphql is covered under [Query and Mutation](#query-and-mutation) section.
 
-**API Gateway** -
+#### API Gateway
 Lambda function is exposed http endpoints via API Gateway. This provides highly available and scalable solution.
 Caching by API Gateway can be enable to provide the latency of requests to APIs. The default TTL for API Gateway caching is 5 minutes.
 
-**Lambda** - 
+#### Lambda
 Business rules are implemented in the AWS Lambda. Serverless or lambda is **managed service** provided by cloud providers, AWS in our implementation. 
 
-Lambda is completely **even driven** i.e. it wll only run when invoked. This is perfect for application services having quiet periods followed by peaks in traffic. 
+Lambda is completely **even driven** i.e. it will only run when invoked. This is perfect for application services having quiet periods followed by peaks in traffic. 
 
 Lambda really works well with API Gateway. Here sole purpose of using lambda behind API Gateway is to expose lambda function through HTTP endpoint.
 
 Lambda can instantly scale up to a large number of parallel executions, for which the limit is controlled by the no of concurrent requests. Downscaling is handled by terminating the lambda functions as soon as it completes the operation.
 
-Serveless implementation is cheap because it meant to be run seldom and you are only billed for the time it executes. 
+Serverless implementation is cheap because it meant to be run seldom and you are only billed for the time it executes. 
 
 There is only one disadvantage: lambda has **cold start**. Only first request get response a bit slower. However this can be avoided by regular polling or using [warmup plugin](https://www.npmjs.com/package/serverless-plugin-warmup).
 
-**Dynamodb** - 
+#### Dynamodb
 Dynamodb is used to persist data provided by collar.
 
-**CloudWatch** - 
+#### CloudWatch
 Cloudwatch is used for logging purpose.
 
 
@@ -83,7 +96,17 @@ Cloudwatch is used for logging purpose.
 ![](etc/db.png)
 **Figure**: Sample data in the database
 
+## GraphQL
 
+Schema - this will define what we can query for and what custom data types we have. 
+
+Query - Anything of type Query or Mutation is something we can ask for in our query to our API. The semantic meaning of Query is that you want to fetch data. 
+
+Mutation - The semantic meaning of Mutation is that you want to create/update or delete data. (Other than reading).
+
+Schema, Query function and Mutation are defined in the `typedef`.
+
+Resolver - a collection of functions that is able to respond to a request and ends up delivering a response
 
 ## Setup
 
