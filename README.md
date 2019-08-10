@@ -79,6 +79,40 @@ There is only one disadvantage: lambda has **cold start**. Only first request ge
 #### Dynamodb
 Dynamodb is used to persist data provided by collar.
 
+DynamoDB is fully managed NoSQL database provided by AWS.
+
+DynamoDB supports a document oriented data model. It means in order to create a table, we just need to define the primary key. Items can be added into the table with dynamic set of attributes. DynamoDB supports the following data types:
+
+* Scalar Data types: Number, String, Binary, Boolean
+* Collection Data types: Set, Map, List
+
+DynamoDB tables require users to reserver Read Capacity Unit (RCU) and Write Capacity Unit (WCU) upfront. Mostly read tables should have higher RCU values than less read tables. 
+
+##### Linear Scalability
+DynamoDB supports auto-sharding and load-balancing. This allows applications to transparently store ever-growing amounts of data.
+
+##### Integration
+DynamoDB is well integrated into the AWS ecosystem. 
+
+* Data can easily and cost-effectively be backed up to S3
+* Easy to export data to Elastic MapReduce (EMR) for analysis
+* Security and access control is integrated into AWS IAM
+
+##### Primary Keys
+
+There are two types of primary key: a simple primary key made up of just a partition key, and a composite primary key made up of a partition key and a sort key. 
+
+The composite primary key enables sophisticated query patterns, including grabbing all items with the given partition key or using the sort key to narrow the relevant items for a particular query.
+
+##### Indexes
+Indexing in DynamoDB give developer and analyst the ability to quickly speed up queries. The primary key is indexed by defaulted. Primary index works the same in DynamoDB as in Relational databases.
+
+DynamoDB supports two other types of indexing called secondary indexing. DynamoDB supports Local Secondary Indexes (LSI) and Global Secondary Index (GSI).
+
+* LSI - uses the same partition key as the underlying table but a different sort key (can be any column). This index is created while creating table.
+
+* GSI - can define an entirely different primary key for a table. This could mean setting an index with just a partition key for a table with a composite primary key. It could also mean using completely different attributes to populate a partition key and sort key.
+
 #### CloudWatch
 Cloudwatch is used for logging purpose.
 
@@ -431,3 +465,5 @@ When developing, local dynamodb can be used.
 
 # References
 [DynamoDB Cross Region Global Tables](https://aws.amazon.com/blogs/database/how-to-use-amazon-dynamodb-global-tables-to-power-multiregion-architectures/)
+
+
