@@ -19,7 +19,7 @@ provider:
         - ssm:Get*
         - ssm:List*
       Resource: "*"
-    - Effect: "Allow"
+    - Effect: Allow
       Action:
         - cloudformation: Create*
         - cloudformation: Describe*
@@ -27,7 +27,7 @@ provider:
         - cloudformation: Update*
         - cloudformation: Execute*
       Resource: "*"
-    - Effect: 'Allow'
+    - Effect: Allow
       Action:
         - 'lambda:InvokeFunction'
       Resource:
