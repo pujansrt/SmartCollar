@@ -18,23 +18,19 @@ provider:
         - ssm:Describe*
         - ssm:Get*
         - ssm:List*
-        - iam: GetRole
-        - iam: AttachRolePolicy
-        - iam: DetachRolePolicy
-        - cloudformation: CancelUpdateStack
-        - cloudformation: ContinueUpdateRollback
-        - cloudformation: CreateChangeSet
-        - cloudformation: CreateStack
-        - cloudformation: CreateUploadBucket
-        - cloudformation: DeleteStack
-        - cloudformation: Describe*
-        - cloudformation: EstimateTemplateCost
-        - cloudformation: ExecuteChangeSet
-        - cloudformation: Get*
-        - cloudformation: List*
-        - cloudformation: UpdateStack
-        - cloudformation: UpdateTerminationProtection
-        - cloudformation: ValidateTemplate
+        - iam:GetRole
+        - iam:AttachRolePolicy
+        - iam:DetachRolePolicy
+        - cloudformation:CancelUpdateStack
+        - cloudformation:ContinueUpdateRollback
+        - cloudformation:CreateChangeSet
+        - cloudformation:CreateStack
+        - cloudformation:DeleteStack
+        - cloudformation:Describe*
+        - cloudformation:ExecuteChangeSet
+        - cloudformation:Get*
+        - cloudformation:List*
+        - cloudformation:UpdateStack
       Resource: "*"
     - Effect: Allow
       Action:
