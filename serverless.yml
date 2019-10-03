@@ -9,6 +9,23 @@ provider:
   memorySize: 1024
   timeout: 30
   environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - cloudformation: CreateStack
+        - cloudformation: DescribeStacks
+        - cloudformation: CreateChangeSet
+        - cloudformation: ListStacks
+        - cloudformation: UpdateStack
+        - cloudformation: DescribeChangeSet
+        - cloudformation: ExecuteChangeSet
+        - iam: GetRole
+        - lambda: UpdateFunctionCode
+        - lambda: UpdateFunctionConfig
+        - lambda: GetFunctionConfiguration
+        - lambda: AddPermission
+        - s3: GetObject
+       Resource: "*"
 
 functions:
   graphql:
