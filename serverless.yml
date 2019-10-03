@@ -21,7 +21,6 @@ provider:
         - iam: GetRole
         - iam: AttachRolePolicy
         - iam: DetachRolePolicy
-        - apigateway: *
         - cloudformation: CancelUpdateStack
         - cloudformation: ContinueUpdateRollback
         - cloudformation: CreateChangeSet
