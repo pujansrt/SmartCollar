@@ -17,6 +17,7 @@ build/Release
 node_modules/
 jspm_packages/
 typings/
+.serverless/
 .npm
 .eslintcache
 .node_repl_history

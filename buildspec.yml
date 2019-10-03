@@ -1,0 +1,10 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - npm i
+      - npm i -g serverless
+      - npm i -g typescript
+  build:
+    commands:
+      - serverless deploy -s dev
