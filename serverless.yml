@@ -9,8 +9,39 @@ provider:
   memorySize: 1024
   timeout: 30
   environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
-  role: arn:aws:iam::485450849347:role/codepipeline-service-role
-
+#  iamRoleStatements:
+#    - Effect: Allow
+#      Action:
+#        - ec2:CreateNetworkInterface
+#        - ec2:DescribeNetworkInterfaces
+#        - ec2:DeleteNetworkInterface
+#        - ssm:Describe*
+#        - ssm:Get*
+#        - ssm:List*
+#        - iam:GetRole
+#        - iam:AttachRolePolicy
+#        - iam:DetachRolePolicy
+#        - cloudformation:CancelUpdateStack
+#        - cloudformation:ContinueUpdateRollback
+#        - cloudformation:CreateChangeSet
+#        - cloudformation:CreateStack
+#        - cloudformation:DeleteStack
+#        - cloudformation:Describe*
+#        - cloudformation:ExecuteChangeSet
+#        - cloudformation:Get*
+#        - cloudformation:List*
+#        - cloudformation:UpdateStack
+#      Resource: "*"
+#    - Effect: Allow
+#      Action:
+#        - 'lambda:InvokeFunction'
+#      Resource:
+#        - Fn::Join:
+#          - ':'
+#          - - arn:aws:lambda
+#            - Ref: AWS::Region
+#            - Ref: AWS::AccountId
+#            - function:*
 
 functions:
   graphql:
