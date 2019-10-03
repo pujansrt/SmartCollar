@@ -10,6 +10,15 @@ provider:
   timeout: 30
   environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
   iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ec2:CreateNetworkInterface
+        - ec2:DescribeNetworkInterfaces
+        - ec2:DeleteNetworkInterface
+        - ssm:Describe*
+        - ssm:Get*
+        - ssm:List*
+      Resource: "*"
     - Effect: "Allow"
       Action:
         - cloudformation: Create*
